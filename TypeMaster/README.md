@@ -45,8 +45,8 @@ Type a passage and see your speed (WPM), accuracy, time and mistakes live.
 
 ## How to build and run
 
-In VS Code, open the project folder (**File > Open Folder**) and press
-**Cmd + Shift + B** on Mac or **Ctrl + Shift + B** on Windows.
+In VS Code, open the **`TypeMaster`** folder itself (**File > Open Folder**), not the
+repository folder above it, and press **Cmd + Shift + B** on Mac or **Ctrl + Shift + B** on Windows.
 This builds the game and opens it (task *Build and Run TypeMaster* in `.vscode/tasks.json`).
 VS Code will suggest the **C/C++** extension; install it for code completion.
 
@@ -56,8 +56,9 @@ You only need to install the compiler and SFML 3 once:
 
 1. Install the Apple compiler (only once): `xcode-select --install`
 2. Install [Homebrew](https://brew.sh), then SFML 3: `brew install sfml`
-3. Press **Cmd + Shift + B** in VS Code, or build and run from the Terminal inside this folder:
+3. Press **Cmd + Shift + B** in VS Code, or build and run from the Terminal:
    ```
+   cd ~/oops-cp/TypeMaster
    clang++ -std=c++17 main.cpp -o main -I"$(brew --prefix)/include" -L"$(brew --prefix)/lib" -lsfml-graphics -lsfml-window -lsfml-system
    ./main
    ```
