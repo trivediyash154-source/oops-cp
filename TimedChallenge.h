@@ -19,6 +19,17 @@ public:
         userInput = "";
     }
 
+    string getModeName() override
+    {
+        return "Timed";
+    }
+
+    // Overrides the base class: the test ends when the time limit is reached
+    bool isTimeUp(float timeSeconds) override
+    {
+        return timeSeconds >= timeLimit;
+    }
+
     int getTimeLimit()
     {
         return timeLimit;

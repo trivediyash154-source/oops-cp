@@ -14,6 +14,11 @@ public:
     {
         userInput = "";
     }
+
+    string getModeName() override
+    {
+        return "Practice";
+    }
 };
 
 #endif

@@ -3,17 +3,21 @@
 	"tasks": [
 		{
 			"type": "cppbuild",
-			"label": "C/C++: g++.exe build active file",
+			"label": "C/C++: g++.exe build TypeMaster",
 			"command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
 			"args": [
 				"-fdiagnostics-color=always",
+				"-std=c++17",
 				"-g",
-				"${file}",
+				"${workspaceFolder}\\main.cpp",
 				"-o",
-				"${fileDirname}\\${fileBasenameNoExtension}.exe"
+				"${workspaceFolder}\\main.exe",
+				"-lsfml-graphics",
+				"-lsfml-window",
+				"-lsfml-system"
 			],
 			"options": {
-				"cwd": "${fileDirname}"
+				"cwd": "${workspaceFolder}"
 			},
 			"problemMatcher": [
 				"$gcc"
@@ -22,7 +26,7 @@
 				"kind": "build",
 				"isDefault": true
 			},
-			"detail": "compiler: C:\\msys64\\ucrt64\\bin\\g++.exe"
+			"detail": "compiler: C:\\msys64\\ucrt64\\bin\\g++.exe (needs SFML 3: pacman -S mingw-w64-ucrt-x86_64-sfml)"
 		}
 	]
 }

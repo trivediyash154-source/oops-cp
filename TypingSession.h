@@ -23,6 +23,15 @@ public:
 
     virtual void startSession() = 0;
 
+    // Each mode returns its own name (used on screen and in the CSV file)
+    virtual string getModeName() = 0;
+
+    // Practice has no time limit, so by default time is never up
+    virtual bool isTimeUp(float timeSeconds)
+    {
+        return false;
+    }
+
     virtual void calculateResult(float timeSeconds)
     {
         correctCharacters = 0;

@@ -68,6 +68,19 @@ public:
     {
         return wrong;
     }
+
+    // Short message shown on the result screen
+    string getRating()
+    {
+        if(wpm >= 60)
+            return "Lightning fast!";
+        if(wpm >= 40)
+            return "Great speed!";
+        if(wpm >= 25)
+            return "Good job!";
+
+        return "Keep practicing!";
+    }
 };
 
 #endif
