@@ -1,0 +1,23 @@
+{
+	"configurations": [
+		{
+			"name": "Mac",
+			"includePath": ["${workspaceFolder}/**", "/opt/homebrew/include", "/usr/local/include"],
+			"compilerPath": "/usr/bin/clang++",
+			"cppStandard": "c++17"
+		},
+		{
+			"name": "Win32",
+			"includePath": ["${workspaceFolder}/**", "C:/msys64/ucrt64/include"],
+			"compilerPath": "C:/msys64/ucrt64/bin/g++.exe",
+			"cppStandard": "c++17"
+		},
+		{
+			"name": "Linux",
+			"includePath": ["${workspaceFolder}/**"],
+			"compilerPath": "/usr/bin/g++",
+			"cppStandard": "c++17"
+		}
+	],
+	"version": 4
+}

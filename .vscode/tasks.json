@@ -2,31 +2,51 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"type": "cppbuild",
-			"label": "C/C++: g++.exe build TypeMaster",
-			"command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
-			"args": [
-				"-fdiagnostics-color=always",
-				"-std=c++17",
-				"-g",
-				"${workspaceFolder}\\main.cpp",
-				"-o",
-				"${workspaceFolder}\\main.exe",
-				"-lsfml-graphics",
-				"-lsfml-window",
-				"-lsfml-system"
-			],
+			"label": "Build TypeMaster",
+			"type": "shell",
+			"osx": {
+				"command": "clang++ -std=c++17 -g main.cpp -o main -I\"$(brew --prefix)/include\" -L\"$(brew --prefix)/lib\" -lsfml-graphics -lsfml-window -lsfml-system"
+			},
+			"linux": {
+				"command": "g++ -std=c++17 -g main.cpp -o main -lsfml-graphics -lsfml-window -lsfml-system"
+			},
+			"windows": {
+				"command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
+				"args": ["-std=c++17", "-g", "main.cpp", "-o", "main.exe", "-lsfml-graphics", "-lsfml-window", "-lsfml-system"]
+			},
 			"options": {
 				"cwd": "${workspaceFolder}"
 			},
-			"problemMatcher": [
-				"$gcc"
-			],
+			"problemMatcher": ["$gcc"],
+			"group": "build"
+		},
+		{
+			"label": "Build and Run TypeMaster",
+			"type": "shell",
+			"dependsOn": "Build TypeMaster",
+			"osx": {
+				"command": "./main"
+			},
+			"linux": {
+				"command": "./main"
+			},
+			"windows": {
+				"command": ".\\main.exe",
+				"options": {
+					"cwd": "${workspaceFolder}",
+					"env": {
+						"PATH": "C:\\msys64\\ucrt64\\bin;${env:PATH}"
+					}
+				}
+			},
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [],
 			"group": {
 				"kind": "build",
 				"isDefault": true
-			},
-			"detail": "compiler: C:\\msys64\\ucrt64\\bin\\g++.exe (needs SFML 3: pacman -S mingw-w64-ucrt-x86_64-sfml)"
+			}
 		}
 	]
 }

@@ -8,6 +8,7 @@
 #include <cmath>
 #include <algorithm>
 #include <stdexcept>
+#include <filesystem>
 #include "TypingSession.h"
 #include "PracticeMode.h"
 #include "TimedChallenge.h"
@@ -807,8 +808,28 @@ private:
     }
 };
 
-int main()
+// Work inside the program's own folder, so prompts.txt and assets/ are found
+// even when the program is opened by double-clicking it (needed on macOS)
+void useProgramFolder(const char* programPath)
 {
+    try
+    {
+        filesystem::path folder = filesystem::path(programPath).parent_path();
+
+        if(!folder.empty())
+            filesystem::current_path(folder);
+    }
+    catch(exception &e)
+    {
+        // keep the current folder
+    }
+}
+
+int main(int argc, char* argv[])
+{
+    if(argc > 0)
+        useProgramFolder(argv[0]);
+
     try
     {
         TypeMasterApp app;

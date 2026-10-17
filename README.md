@@ -43,22 +43,41 @@ Type a passage and see your speed (WPM), accuracy, time and mistakes live.
 | `Theme.h` | All colours and the soft glow effect |
 | `assets/fonts/` | Poppins and JetBrains Mono fonts (free, SIL Open Font License) |
 
-## How to build and run (Windows, MSYS2)
+## How to build and run
 
-1. Install the compiler and SFML 3 once, from the **MSYS2 UCRT64** terminal:
+In VS Code, open the project folder (**File > Open Folder**) and press
+**Cmd + Shift + B** on Mac or **Ctrl + Shift + B** on Windows.
+This builds the game and opens it (task *Build and Run TypeMaster* in `.vscode/tasks.json`).
+VS Code will suggest the **C/C++** extension; install it for code completion.
+
+You only need to install the compiler and SFML 3 once:
+
+### macOS
+
+1. Install the Apple compiler (only once): `xcode-select --install`
+2. Install [Homebrew](https://brew.sh), then SFML 3: `brew install sfml`
+3. Press **Cmd + Shift + B** in VS Code, or build and run from the Terminal inside this folder:
+   ```
+   clang++ -std=c++17 main.cpp -o main -I"$(brew --prefix)/include" -L"$(brew --prefix)/lib" -lsfml-graphics -lsfml-window -lsfml-system
+   ./main
+   ```
+
+### Windows (MSYS2)
+
+1. Install the compiler and SFML 3, from the **MSYS2 UCRT64** terminal:
    ```
    pacman -S mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-sfml
    ```
-2. Open this folder in VS Code and press **Ctrl + Shift + B** (uses `.vscode/tasks.json`),
-   or build from the terminal inside this folder:
+2. Press **Ctrl + Shift + B** in VS Code, or build from a terminal inside this folder:
    ```
    g++ -std=c++17 main.cpp -o main.exe -lsfml-graphics -lsfml-window -lsfml-system
    ```
-3. Run `main.exe` **from this folder**, so it can find `prompts.txt` and `assets/`.
-   If Windows says an SFML `.dll` is missing, add `C:\msys64\ucrt64\bin` to your PATH
-   (or run it from the MSYS2 UCRT64 terminal).
+3. If Windows says an SFML `.dll` is missing when you run `main.exe` yourself,
+   add `C:\msys64\ucrt64\bin` to your PATH (VS Code's task already does this).
 
-On Linux, the same `g++` command works once SFML 3 is installed.
+### Linux
+
+Install SFML 3, then use the same `g++` command as Windows (output `main`) and run `./main`.
 
 ## Controls
 
